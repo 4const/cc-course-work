@@ -13,11 +13,10 @@ public class User {
 	@Column(length = 20, nullable = false)
 	private String name;
 
-	@Column(columnDefinition = "boolean default false", nullable = false)
-	private boolean isAdmin;
+	@Column(columnDefinition = "smallint default 0", nullable = false)
+	private short role;
 
-	public User(String name) {
-		this.name = name;
+	public User() {
 	}
 
 	public int getId() {
@@ -36,12 +35,12 @@ public class User {
 		this.name = name;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
+	public short getRole() {
+		return role;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setRole(short role) {
+		this.role = role;
 	}
 
 	@Override
@@ -58,7 +57,7 @@ public class User {
 		if (id != user.id) {
 			return false;
 		}
-		if (isAdmin != user.isAdmin) {
+		if (role != user.role) {
 			return false;
 		}
 		if (name != null ? !name.equals(user.name) : user.name != null) {
@@ -72,7 +71,7 @@ public class User {
 	public int hashCode() {
 		int result = id;
 		result = 31 * result + (name != null ? name.hashCode() : 0);
-		result = 31 * result + (isAdmin ? 1 : 0);
+		result = 31 * result + (int)role;
 		return result;
 	}
 
@@ -81,7 +80,7 @@ public class User {
 		return "User{" +
 			"id=" + id +
 			", name='" + name + '\'' +
-			", isAdmin=" + isAdmin +
+			", role=" + role +
 			'}';
 	}
 }
