@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+
+spring:
+# DataSource Settings
+  datasource:
+    url: jdbc:postgresql:students-grant
+    username: cs-nstu
+    password: cs123
+
+# JPA Serrings
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      show-sql: true
