@@ -27,6 +27,6 @@ public class Application extends SpringBootServletInitializer {
 	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
         return builder
 			.showBanner(false)
-			.sources(Application.class);
+			.sources(Application.class, WebApplicationConfiguration.class);
 	}
 }
