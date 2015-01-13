@@ -36,7 +36,7 @@ public class GroupService {
 		Group group = groupRepository.findOne(id);
 
 		if (group != null) {
-            if (studentRepository.findByGroup(group).isEmpty()) {
+            if (studentRepository.findByGroup(id).isEmpty()) {
                 groupRepository.delete(group);
             } else {
                 throw new GroupHasStudents(group.getId());

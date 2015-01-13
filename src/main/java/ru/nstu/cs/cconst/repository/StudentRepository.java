@@ -1,8 +1,8 @@
 package ru.nstu.cs.cconst.repository;
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import ru.nstu.cs.cconst.model.Group;
 import ru.nstu.cs.cconst.model.Student;
 
 import java.util.List;
@@ -11,11 +11,12 @@ public interface StudentRepository extends Repository<Student, Integer> {
 
     Student save(Student student);
 
-	Student findOne(int id);
+	Student findOne(Integer id);
 
 	List<Student> findAll();
 
-	List<Student> findByGroup(Group group);
+    @Query("from Student where group.id = ?1")
+	List<Student> findByGroup(int groupId);
 
 	void delete(Student student);
 }

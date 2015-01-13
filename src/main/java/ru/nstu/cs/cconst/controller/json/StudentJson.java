@@ -7,13 +7,13 @@ public class StudentJson {
 	public String patronymic;
 	public Integer groupId;
 	public String group;
-	public double grant;
+	public Double grant;
 
     public StudentJson() {
     }
 
     public StudentJson(Integer id, String lastName, String firstName,
-                       String patronymic, Integer groupId, String group, double grant) {
+                       String patronymic, Integer groupId, String group, Double grant) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;

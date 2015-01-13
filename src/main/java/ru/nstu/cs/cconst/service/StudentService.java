@@ -19,8 +19,12 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Student get(Integer id) {
+    public Student get(int id) {
         return studentRepository.findOne(id);
+    }
+
+    public List<Student> getByGroup(int groupId) {
+        return studentRepository.findByGroup(groupId);
     }
 
 	public List<Student> all() {
