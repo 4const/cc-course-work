@@ -11,7 +11,7 @@ public interface StudentRepository extends Repository<Student, Integer> {
 
     Student save(Student student);
 
-	Student findOne(int id);
+	Student findOne(Integer id);
 
 	List<Student> findAll();
 

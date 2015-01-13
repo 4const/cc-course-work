@@ -41,7 +41,7 @@ public class StudentController {
     private Function<Student, StudentJson> studentToJson =
 		s -> new StudentJson(
 			s.getId(),
-			s.getFirstName(),
+			s.getLastName(),
 			s.getFirstName(),
 			s.getPatronymic(),
 			s.getGroup().getId(),
