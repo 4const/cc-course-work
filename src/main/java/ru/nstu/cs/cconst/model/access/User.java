@@ -11,7 +11,9 @@ public class User {
 	private int id;
 
 	@Column(length = 20, nullable = false)
-	private String name;
+	private String login;
+
+	private String password;
 
 	@Column(columnDefinition = "smallint default 0", nullable = false)
 	private short role;
@@ -27,12 +29,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public short getRole() {
@@ -60,7 +70,10 @@ public class User {
 		if (role != user.role) {
 			return false;
 		}
-		if (name != null ? !name.equals(user.name) : user.name != null) {
+		if (login != null ? !login.equals(user.login) : user.login != null) {
+			return false;
+		}
+		if (password != null ? !password.equals(user.password) : user.password != null) {
 			return false;
 		}
 
@@ -70,7 +83,8 @@ public class User {
 	@Override
 	public int hashCode() {
 		int result = id;
-		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (login != null ? login.hashCode() : 0);
+		result = 31 * result + (password != null ? password.hashCode() : 0);
 		result = 31 * result + (int)role;
 		return result;
 	}
@@ -79,7 +93,8 @@ public class User {
 	public String toString() {
 		return "User{" +
 			"id=" + id +
-			", name='" + name + '\'' +
+			", login='" + login + '\'' +
+			", password='" + password + '\'' +
 			", role=" + role +
 			'}';
 	}
