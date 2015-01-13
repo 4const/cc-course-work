@@ -7,7 +7,7 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(length = 20, nullable = false)
 	private String lastName;
@@ -27,11 +27,20 @@ public class Student {
 	public Student() {
 	}
 
-	public int getId() {
+    public Student(Integer id, String lastName, String firstName, String patronymic, Group group, double grant) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+        this.group = group;
+        this.grant = grant;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -89,7 +98,7 @@ public class Student {
 		if (Double.compare(student.grant, grant) != 0) {
 			return false;
 		}
-		if (id != student.id) {
+		if (!id.equals(student.id)) {
 			return false;
 		}
 		if (firstName != null ? !firstName.equals(student.firstName) : student.firstName != null) {

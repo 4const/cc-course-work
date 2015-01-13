@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface StudentRepository extends Repository<Student, Integer> {
 
-	void save(Student student);
+    Student save(Student student);
 
 	Student findOne(Integer id);
 

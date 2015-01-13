@@ -8,7 +8,7 @@ public class Group {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(length = 20, nullable = false)
 	private String name;
@@ -16,11 +16,16 @@ public class Group {
 	public Group() {
 	}
 
-	public int getId() {
+    public Group(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -43,7 +48,7 @@ public class Group {
 
 		Group group = (Group)o;
 
-		if (id != group.id) {
+		if (!id.equals(group.id)) {
 			return false;
 		}
 		if (name != null ? !name.equals(group.name) : group.name != null) {
@@ -55,7 +60,7 @@ public class Group {
 
 	@Override
 	public int hashCode() {
-		int result = id;
+        Integer result = id;
 		result = 31 * result + (name != null ? name.hashCode() : 0);
 		return result;
 	}

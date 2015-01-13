@@ -1,9 +1,7 @@
 package ru.nstu.cs.cconst.controller.json;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 public class StudentJson {
-	public int id;
+	public Integer id;
 	public String lastName;
 	public String firstName;
 	public String patronymic;
@@ -11,11 +9,11 @@ public class StudentJson {
 	public String group;
 	public double grant;
 
-	public StudentJson() {
-	}
+    public StudentJson() {
+    }
 
-	@JsonCreator
-	public StudentJson(int id, String lastName, String firstName, String patronymic, Integer groupId, String group, double grant) {
+    public StudentJson(Integer id, String lastName, String firstName,
+                       String patronymic, Integer groupId, String group, double grant) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
