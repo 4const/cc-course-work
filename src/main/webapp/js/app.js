@@ -75,6 +75,16 @@ $(function() {
 		__editedStudent = s;
 	};
 
+	var fillGroupForm = function(g) {
+		$('#groupFieldError').addClass('hidden');
+		$('#groupServerError').addClass('hidden');
+		if (!g) { g = {}; }
+
+		$('#groupName').val(g.name);
+
+		__editedGroup = g;
+	};
+
 	$('#students').on('click', 'tr', function() {
 		if ($(this).hasClass('selected')) {
 			$(this).removeClass('selected');
@@ -128,6 +138,34 @@ $(function() {
 		});
 	});
 
+	$('#newGroupBtn').on('click', function() {
+		fillGroupForm();
+	});
+
+	$('#editGroupBtn').on('click', function(e) {
+		if (!__selectedGroup) {
+			return false;
+		}
+		fillGroupForm(__selectedGroup);
+	});
+
+	$('#deleteGroupBtn').on('click', function(e) {
+		if (!__selectedGroup) {
+			return false;
+		}
+
+		$.ajax({
+			url: '/group?id=' + __selectedGroup.id,
+			method: 'DELETE',
+		}).done(function(res) {
+			if (res) {
+				refreshGroups();
+			} else {
+				$('#errorModal').modal('toggle');
+			}
+		});
+	});
+
 	$('#saveStudentBtn').on('click', function() {
 		$('#studentFieldError').addClass('hidden');
 		$('#studentServerError').addClass('hidden');
@@ -162,6 +200,32 @@ $(function() {
 		}).fail(function() {
         	$('#studentServerError').removeClass('hidden');
         });
+	});
+
+	$('#saveGroupBtn').on('click', function() {
+		$('#groupFieldError').addClass('hidden');
+		$('#groupServerError').addClass('hidden');
+
+		__editedGroup.name = $('#groupName').val();
+
+		if (!__editedGroup.name) {
+			$('#groupFieldError').removeClass('hidden');
+			return false;
+		}
+
+		$.ajax({
+			url: '/group',
+			method: 'PUT',
+			contentType: 'application/json',
+			data: JSON.stringify(__editedGroup)
+		}).done(function(res) {
+			refreshStudents();
+			refreshGroups();
+
+			$('#groupModal').modal('toggle');
+		}).fail(function() {
+			$('#groupServerError').removeClass('hidden');
+		});
 	});
 
 

@@ -2,7 +2,6 @@ package ru.nstu.cs.cconst.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.nstu.cs.cconst.GroupHasStudents;
 import ru.nstu.cs.cconst.model.Group;
 import ru.nstu.cs.cconst.repository.GroupRepository;
 import ru.nstu.cs.cconst.repository.StudentRepository;
@@ -32,15 +31,16 @@ public class GroupService {
 		return groupRepository.findAll();
 	}
 
-	public void delete(Integer id) {
+	public boolean delete(Integer id) {
 		Group group = groupRepository.findOne(id);
 
 		if (group != null) {
             if (studentRepository.findByGroup(id).isEmpty()) {
                 groupRepository.delete(group);
-            } else {
-                throw new GroupHasStudents(group.getId());
+                return true;
             }
 		}
+
+        return false;
 	}
 }

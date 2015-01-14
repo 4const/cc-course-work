@@ -175,13 +175,13 @@
 						<div class="panel-body">
 							<div class="table-responsive">
 								<div class="btn-group mg-bt-10">
-									<button data-toggle="modal" data-target="#groupModal" class="btn btn-default">
+									<button id="newGroupBtn" data-toggle="modal" data-target="#groupModal" class="btn btn-default">
 										<i class="fa fa-plus fa-fw"></i> Добавить
 									</button>
-									<button data-toggle="modal" data-target="#groupModal" class="btn btn-default">
+									<button id="editGroupBtn" data-toggle="modal" data-target="#groupModal" class="btn btn-default">
 										<i class="fa fa-edit fa-fw"></i> Редактировать
 									</button>
-									<button class="btn btn-default">
+									<button id="deleteGroupBtn" class="btn btn-default">
 										<i class="fa fa-times fa-fw"></i> Удалить
 									</button>
 								</div>
@@ -266,7 +266,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button class="btn btn-default" data-dismiss="modal">Отмена</button>
 				<button id="saveStudentBtn" class="btn btn-primary">Сохранить</button>
 			</div>
 		</div>
@@ -293,13 +293,29 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button class="btn btn-default" data-dismiss="modal">Отмена</button>
 				<button id="saveGroupBtn" class="btn btn-primary">Сохранить</button>
 			</div>
 		</div>
 	</div>
 </div>
 
+<div id="errorModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-danger">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden>×</button>
+				<h4 class="modal-title">Ошибка</h4>
+			</div>
+			<div class="modal-body text-warning">
+				<div>Либо группа уже не существует, либо к ней еще прикреплены студенты</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

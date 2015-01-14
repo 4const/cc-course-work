@@ -2,10 +2,7 @@ package ru.nstu.cs.cconst.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.nstu.cs.cconst.controller.json.GroupJson;
 import ru.nstu.cs.cconst.model.Group;
 import ru.nstu.cs.cconst.model.Student;
@@ -34,10 +31,17 @@ public class GroupController {
     }
 
     @RequestMapping(value = "/group", method = RequestMethod.PUT)
+    @ResponseBody
     public GroupJson save(@RequestBody GroupJson groupJson) throws Throwable {
         Group saved = groupService.save(jsonToGroup.apply(groupJson));
 
         return groupToJson.apply(saved);
+    }
+
+    @RequestMapping(value = "/group", method = RequestMethod.DELETE)
+    @ResponseBody
+    public boolean save(@RequestParam Integer id) throws Throwable {
+        return groupService.delete(id);
     }
 
     private Function<Group, GroupJson> groupToJson =
