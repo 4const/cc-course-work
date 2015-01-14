@@ -1,221 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Система управления стипендиями</title>
+	<title>Система управления стипендиями</title>
 
-    <link href="css/main.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/sb-admin.css" rel="stylesheet">
+	<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- jQuery -->
-    <script type="application/javascript" src="js/jquery.js"></script>
+	<!-- jQuery -->
+	<script type="application/javascript" src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script type="application/javascript" src="js/bootstrap.min.js"></script>
 
-    <script type="application/javascript" src="js/app.js"></script>
+	<script type="application/javascript" src="js/app.js"></script>
 </head>
 <body>
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Студенческя стипендия</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user"></i>
-                        <span>Константин Чудимов</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-fw fa-gear"></i>
-                                Пользователи
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-fw fa-power-off"></i>
-                                Выйти
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Left Menu Items -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="/"><i class="fa fa-fw fa-graduation-cap"></i> Студенты</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<div id="wrapper">
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Студенческя стипендия</a>
+		</div>
+		<!-- Top Menu Items -->
+		<ul class="nav navbar-right top-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-user"></i>
+					<span>Константин Чудимов</span>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#">
+							<i class="fa fa-fw fa-gear"></i>
+							Пользователи
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-fw fa-power-off"></i>
+							Выйти
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<!-- Left Menu Items -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav side-nav">
+				<li class="active">
+					<a href="/"><i class="fa fa-fw fa-graduation-cap"></i> Студенты</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Студенты
-                        </h1>
-                    </div>
-                </div>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Студенты
+					</h1>
+				</div>
+			</div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  Оформление четстно взято с <a href="http://startbootstrap.com/template-overviews/sb-admin" class="alert-link">SB Admin</a>!
-                        </div>
-                    </div>
-                </div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="alert alert-info alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<i class="fa fa-info-circle"></i> Оформление четстно взято с <a
+									href="http://startbootstrap.com/template-overviews/sb-admin" class="alert-link">SB Admin</a>!
+					</div>
+				</div>
+			</div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Стипендия</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div>
-                                    <div class="mg-bt-10">
-                                        <div class="btn-group">
-                                            <button class="btn btn-default">
-                                                <i class="fa fa-plus fa-fw"></i> Добавить
-                                            </button>
-                                            <button class="btn btn-default">
-                                                <i class="fa fa-edit fa-fw"></i> Редактировать
-                                            </button>
-                                            <button class="btn btn-default">
-                                                <i class="fa fa-times fa-fw"></i> Удалить
-                                            </button>
-                                        </div>
-                                        <div class="form-group input-group search-input">
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
-                                        </div>
-                                    </div>
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>№</th>
-                                            <th>Фамилия</th>
-                                            <th>Имя</th>
-                                            <th>Отчество</th>
-                                            <th>Группа</th>
-                                            <th>Стипендия (<i class="fa fa-rub" style="font-weight: bold"></i>)</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="students">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Акимов</td>
-                                            <td>Максим</td>
-                                            <td>Евгеньевич</td>
-                                            <td>АММ-13</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Дорошенко</td>
-                                            <td>Наталья</td>
-                                            <td>Александровна</td>
-                                            <td>АММ-13</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Соловьев</td>
-                                            <td>Никита</td>
-                                            <td>Олегович</td>
-                                            <td>АММ-13</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Чудимов</td>
-                                            <td>Константин</td>
-                                            <td>Сергеевич</td>
-                                            <td>АММ-13</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Ильиных</td>
-                                            <td>Полина</td>
-                                            <td>Николаевна</td>
-                                            <td>АИБМ-13</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Группы</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <div class="btn-group mg-bt-10">
-                                        <button class="btn btn-default">
-                                            <i class="fa fa-plus fa-fw"></i> Добавить
-                                        </button>
-                                        <button class="btn btn-default">
-                                            <i class="fa fa-edit fa-fw"></i> Редактировать
-                                        </button>
-                                        <button class="btn btn-default">
-                                            <i class="fa fa-times fa-fw"></i> Удалить
-                                        </button>
-                                    </div>
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>№</th>
-                                                <th>Название</th>
-                                                <th>Стипендия (<i class="fa fa-rub" style="font-weight: bold"></i>)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>АИБМ-13</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>АИТМ-13</td>
-                                                <td>0</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>АММ-13</td>
-                                                <td>0</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Стипендия</h3>
+						</div>
+						<div class="panel-body">
+							<div>
+								<div class="mg-bt-10">
+									<div class="btn-group">
+										<button id="newStudentBtn" data-toggle="modal" data-target="#studentModal" class="btn btn-default">
+											<i class="fa fa-plus fa-fw"></i> Добавить
+										</button>
+										<button id="editStudentBtn" data-toggle="modal" data-target="#studentModal" class="btn btn-default">
+											<i class="fa fa-edit fa-fw"></i> Редактировать
+										</button>
+										<button id="deleteStudentBtn" class="btn btn-default">
+											<i class="fa fa-times fa-fw"></i> Удалить
+										</button>
+									</div>
+									<div class="form-group input-group search-input">
+										<input type="text" class="form-control">
+										<span class="input-group-btn"><button class="btn btn-default" type="button"><i
+														class="fa fa-search"></i></button></span>
+									</div>
+								</div>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+									<tr>
+										<th>№</th>
+										<th>Фамилия</th>
+										<th>Имя</th>
+										<th>Отчество</th>
+										<th>Группа</th>
+										<th>Стипендия (<i class="fa fa-rub" style="font-weight: bold"></i>)</th>
+									</tr>
+									</thead>
+									<tbody id="students">
+									<tr>
+										<td>1</td>
+										<td>Акимов</td>
+										<td>Максим</td>
+										<td>Евгеньевич</td>
+										<td>АММ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Дорошенко</td>
+										<td>Наталья</td>
+										<td>Александровна</td>
+										<td>АММ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Соловьев</td>
+										<td>Никита</td>
+										<td>Олегович</td>
+										<td>АММ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>Чудимов</td>
+										<td>Константин</td>
+										<td>Сергеевич</td>
+										<td>АММ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>Ильиных</td>
+										<td>Полина</td>
+										<td>Николаевна</td>
+										<td>АИБМ-13</td>
+										<td>0</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="fa fa-users fa-fw"></i> Группы</h3>
+						</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+								<div class="btn-group mg-bt-10">
+									<button data-toggle="modal" data-target="#groupModal" class="btn btn-default">
+										<i class="fa fa-plus fa-fw"></i> Добавить
+									</button>
+									<button data-toggle="modal" data-target="#groupModal" class="btn btn-default">
+										<i class="fa fa-edit fa-fw"></i> Редактировать
+									</button>
+									<button class="btn btn-default">
+										<i class="fa fa-times fa-fw"></i> Удалить
+									</button>
+								</div>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+									<tr>
+										<th>№</th>
+										<th>Название</th>
+										<th>Стипендия (<i class="fa fa-rub" style="font-weight: bold"></i>)</th>
+									</tr>
+									</thead>
+									<tbody id="groups">
+									<tr>
+										<td>1</td>
+										<td>АИБМ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>АИТМ-13</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>АММ-13</td>
+										<td>0</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="studentModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden>×</button>
+				<h4 class="modal-title">Студент</h4>
+			</div>
+			<div class="modal-body">
+				<div id="studentFieldError" class="alert alert-warning fade in hidden">
+					Поля заполены неверно
+				</div>
+				<div id="studentServerError" class="alert alert-danger fade in hidden">
+					Ошибка сервера
+				</div>
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="form-group">
+						<label class="control-label">Фамилия</label>
+						<input id="lastName" type="text" class="form-control">
+					</div>
+						<div class="form-group">
+							<label class="control-label">Имя</label>
+							<input id="firstName" type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Отчество</label>
+							<input id="patronymic" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="form-group">
+							<label>Группа</label>
+							<select id="studentGroup" class="form-control">
+								<option>АИБМ-13</option>
+								<option>АИТМ-13</option>
+								<option>АММ-13</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Стипендия</label>
+							<input id="grant" type="number" step="1" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button id="saveStudentBtn" class="btn btn-primary">Сохранить</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="groupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden>×</button>
+				<h4 class="modal-title">Группа</h4>
+			</div>
+			<div class="modal-body">
+				<div id="groupFieldError" class="alert alert-warning fade in hidden">
+					Поля заполены неверно
+				</div>
+				<div id="groupServerError" class="alert alert-danger fade in hidden">
+					Ошибка сервера
+				</div>
+				<div class="form-group">
+					<label class="control-label">Назавание группы</label>
+					<input id="groupName" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button id="saveGroupBtn" class="btn btn-primary">Сохранить</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 </body>
 </html>

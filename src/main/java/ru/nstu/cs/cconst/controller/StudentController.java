@@ -27,12 +27,14 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/student", method = RequestMethod.DELETE)
+	@ResponseBody
 	public void delete(@RequestParam("id") Integer id) throws Throwable {
 		studentService.delete(id);
 	}
 
     @RequestMapping(value = "/student", method = RequestMethod.PUT)
-    public StudentJson save(@RequestBody StudentJson studentJson) throws Throwable {
+	@ResponseBody
+	public StudentJson save(@RequestBody StudentJson studentJson) throws Throwable {
         Student saved = studentService.save(jsonToStudent.apply(studentJson));
 
         return studentToJson.apply(saved);

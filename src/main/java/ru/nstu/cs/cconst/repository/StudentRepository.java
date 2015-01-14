@@ -13,6 +13,7 @@ public interface StudentRepository extends Repository<Student, Integer> {
 
 	Student findOne(Integer id);
 
+	@Query("from Student order by id asc")
 	List<Student> findAll();
 
     @Query("from Student where group.id = ?1")

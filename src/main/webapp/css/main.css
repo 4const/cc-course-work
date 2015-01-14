@@ -8,3 +8,7 @@
     width: 33% !important;
     margin: 0 !important;
 }
+
+.selected {
+    background-color: #CDD7F7 !important;
+}
