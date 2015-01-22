@@ -2,11 +2,11 @@ package ru.nstu.cs.cconst.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.nstu.cs.cconst.model.Group;
 import ru.nstu.cs.cconst.repository.GroupRepository;
 import ru.nstu.cs.cconst.repository.StudentRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
