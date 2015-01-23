@@ -13,7 +13,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public User get(String login, String password) {
-		return userRepository.findOne(login, password);
+	public User get(String login) {
+		return userRepository.findOne(login);
 	}
 }

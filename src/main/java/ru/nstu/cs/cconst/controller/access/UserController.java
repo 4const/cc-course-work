@@ -20,6 +20,6 @@ public class UserController {
 	@ResponseBody
 	public boolean signIn(@RequestParam String login,
 						  @RequestParam String password, HttpSession session) {
-
+		return true;
 	}
 }
