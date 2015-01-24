@@ -1,0 +1,22 @@
+package ru.nstu.cs.cconst.security;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Optional;
+
+public class SecurityContext {
+
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
+	public static final String ROLE_USER = "ROLE_USER";
+
+
+	public static Optional<UserDetails> getUserDetails()
+	{
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal.equals("anonymousUser")) {
+			return Optional.empty();
+		}
+		return Optional.of((UserDetails)principal);
+	}
+}

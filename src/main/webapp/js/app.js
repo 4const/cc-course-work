@@ -8,6 +8,88 @@ $(function() {
 	var __editedGroup = undefined;
     var __selectedGroup = undefined;
 
+    var onLogin = function(user) {
+    	$('#main').removeClass('hidden');
+		$('#loginModal').modal('hide');
+
+		$('#username').text(user.name);
+
+		$('#userrole').text(user.admin ? 'Администратор' : 'Пользователь');
+		if (user.admin) {
+            $('#studentBtnPanel').removeClass('hidden');
+            $('#groupBtnPanel').removeClass('hidden');
+		} else {
+            $('#studentBtnPanel').addClass('hidden');
+            $('#groupBtnPanel').addClass('hidden');
+		}
+
+		refreshStudents();
+		refreshGroups();
+    };
+
+    var onLogout = function() {
+		$('#main').addClass('hidden');
+		$('#loginModal').modal('show');
+
+		$('#students').find('tr').remove();
+		$('#groups').find('tr').remove();
+	};
+
+	var checkLogin = function() {
+		$.ajax({
+			url: '/user',
+			method: 'GET',
+		}).done(function(user) {
+			if (user) {
+				onLogin(user);
+			} else {
+				onLogout();
+			}
+		});
+	};
+
+	$('#loginBtn').on('click', function() {
+		$('#loginFieldError').addClass('hidden');
+		$('#loginServerError').addClass('hidden');
+
+		var login = $('#login').val();
+		var password = $('#password').val();
+
+		var fd = new FormData();
+		fd.append('username', login);
+		fd.append('password', password);
+
+		$.ajax({
+			url: '/login',
+			method: 'POST',
+			contentType: false,
+			processData: false,
+			data: fd
+		}).done(function(user) {
+			if (user.status === "rejected")
+			{
+				$('#loginFieldError').removeClass('hidden');
+				return;
+			}
+			$('#login').val('');
+			 $('#password').val('');
+            onLogin(user);
+		}).fail(function(e) {
+			$('#loginServerError').removeClass('hidden');
+		});
+	});
+
+    	$('#logoutBtn').on('click', function() {
+    		onLogout();
+
+    		$.ajax({
+    			url: 'logout',
+    			method: 'POST',
+    			contentType: false,
+    			processData: false
+    		});
+    	});
+
 	var refreshStudents = function() {
 		$.ajax({
 			url: '/student',
@@ -228,7 +310,5 @@ $(function() {
 		});
 	});
 
-
-    refreshStudents();
-    refreshGroups();
+	checkLogin();
 });

@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
+	public static final short USER_ADMIN = 7;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

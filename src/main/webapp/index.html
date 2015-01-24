@@ -21,6 +21,7 @@
 	<script type="application/javascript" src="js/app.js"></script>
 </head>
 <body>
+<div id="main" class="hidden">
 <div id="wrapper">
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -32,19 +33,18 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-user"></i>
-					<span>Константин Чудимов</span>
+					<span id="username"></span>
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="#">
-							<i class="fa fa-fw fa-gear"></i>
-							Пользователи
+						<a>
+							<span id="userrole"></span>
 						</a>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="#">
+						<a id="logoutBtn">
 							<i class="fa fa-fw fa-power-off"></i>
 							Выйти
 						</a>
@@ -88,11 +88,16 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Стипендия</h3>
+							<div class="form-group input-group search-input">
+								<input type="text" class="form-control">
+								<span class="input-group-btn"><button class="btn btn-default" type="button"><i
+												class="fa fa-search"></i></button></span>
+							</div>
 						</div>
 						<div class="panel-body">
 							<div>
 								<div class="mg-bt-10">
-									<div class="btn-group">
+									<div id="studentBtnPanel" class="btn-group">
 										<button id="newStudentBtn" data-toggle="modal" data-target="#studentModal" class="btn btn-default">
 											<i class="fa fa-plus fa-fw"></i> Добавить
 										</button>
@@ -102,11 +107,6 @@
 										<button id="deleteStudentBtn" class="btn btn-default">
 											<i class="fa fa-times fa-fw"></i> Удалить
 										</button>
-									</div>
-									<div class="form-group input-group search-input">
-										<input type="text" class="form-control">
-										<span class="input-group-btn"><button class="btn btn-default" type="button"><i
-														class="fa fa-search"></i></button></span>
 									</div>
 								</div>
 								<table class="table table-bordered table-hover table-striped">
@@ -174,7 +174,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="table-responsive">
-								<div class="btn-group mg-bt-10">
+								<div id="groupBtnPanel" class="btn-group mg-bt-10">
 									<button id="newGroupBtn" data-toggle="modal" data-target="#groupModal" class="btn btn-default">
 										<i class="fa fa-plus fa-fw"></i> Добавить
 									</button>
@@ -218,6 +218,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <div id="studentModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -312,6 +313,36 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Вход в систему</h4>
+			</div>
+			<div class="modal-body">
+				<div id="loginFieldError" class="alert alert-warning fade in hidden">
+					Введенные данные неверны
+				</div>
+				<div id="loginServerError" class="alert alert-danger fade in hidden">
+					Ошибка сервера
+				</div>
+					<div class="form-group">
+						<label class="control-label">Логин</label>
+						<input id="login" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label">Пароль</label>
+						<input id="password" type="password" class="form-control">
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button id="loginBtn" class="btn btn-primary">Войти</button>
 			</div>
 		</div>
 	</div>

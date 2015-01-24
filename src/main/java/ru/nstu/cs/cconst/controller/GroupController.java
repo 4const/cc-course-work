@@ -1,6 +1,7 @@
 package ru.nstu.cs.cconst.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.nstu.cs.cconst.controller.json.GroupJson;
@@ -14,6 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Controller
+@PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
 public class GroupController {
 
     @Autowired
