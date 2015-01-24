@@ -66,7 +66,7 @@ $(function() {
 			processData: false,
 			data: fd
 		}).done(function(user) {
-			if (user.status === "rejected")
+			if (user.status === 'rejected')
 			{
 				$('#loginFieldError').removeClass('hidden');
 				return;
@@ -79,16 +79,34 @@ $(function() {
 		});
 	});
 
-    	$('#logoutBtn').on('click', function() {
-    		onLogout();
+	$('#logoutBtn').on('click', function() {
+		onLogout();
 
-    		$.ajax({
-    			url: 'logout',
-    			method: 'POST',
-    			contentType: false,
-    			processData: false
-    		});
-    	});
+		$.ajax({
+			url: 'logout',
+			method: 'POST',
+			contentType: false,
+			processData: false
+		});
+	});
+
+	var fillStudentTable = function(students) {
+		var table = $('#students');
+		table.find('tr').remove();
+
+		students.forEach(function(s) {
+			var row = $('<tr>');
+			row.append($('<td>').text(s.id));
+			row.append($('<td>').text(s.lastName));
+			row.append($('<td>').text(s.firstName));
+			row.append($('<td>').text(s.patronymic));
+			row.append($('<td>').text(s.group));
+			row.append($('<td>').text(s.grant));
+
+			row.data('id', s.id);
+			table.append(row);
+		});
+	};
 
 	var refreshStudents = function() {
 		$.ajax({
@@ -96,21 +114,7 @@ $(function() {
 			method: 'GET',
 		}).done(function(students) {
 			__students = students;
-			var table = $('#students');
-			table.find('tr').remove();
-
-			students.forEach(function(s) {
-				var row = $('<tr>');
-				row.append($('<td>').text(s.id));
-				row.append($('<td>').text(s.lastName));
-				row.append($('<td>').text(s.firstName));
-				row.append($('<td>').text(s.patronymic));
-				row.append($('<td>').text(s.group));
-				row.append($('<td>').text(s.grant));
-
-				row.data('id', s.id);
-				table.append(row);
-			});
+			fillStudentTable(__students);
 		});
     };
 
@@ -196,6 +200,10 @@ $(function() {
 	});
 
 	$('#newStudentBtn').on('click', function() {
+		if (__groups.length == 0) {
+			return false;
+		}
+
 		fillStudentForm();
 	});
 
@@ -203,6 +211,10 @@ $(function() {
 		if (!__selectedStudent) {
 			return false;
 		}
+		if (__groups.length == 0) {
+			return false;
+		}
+
 		fillStudentForm(__selectedStudent);
 	});
 
@@ -308,6 +320,24 @@ $(function() {
 		}).fail(function() {
 			$('#groupServerError').removeClass('hidden');
 		});
+	});
+
+	$('#searchBtn').on('click', function() {
+        var searchString = $('#search').val();
+        searchString = searchString.split('*').join('([а-яА-Я\\d]*)')
+        searchString = searchString.split('?').join('([а-яА-Я\\d]?)')
+        var re = new RegExp(searchString, 'gi');
+
+        var filtered = __students.filter(function(s) {
+        	return s.lastName.match(re) || s.group.match(re);
+        });
+
+		fillStudentTable(filtered);
+	});
+
+	$('#searchResetBtn').on('click', function() {
+		var searchString = $('#search').val('');
+		fillStudentTable(__students);
 	});
 
 	checkLogin();

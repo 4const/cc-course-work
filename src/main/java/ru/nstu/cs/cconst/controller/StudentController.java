@@ -10,7 +10,6 @@ import ru.nstu.cs.cconst.model.Student;
 import ru.nstu.cs.cconst.security.SecurityContext;
 import ru.nstu.cs.cconst.service.StudentService;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
