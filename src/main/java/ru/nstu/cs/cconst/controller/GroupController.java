@@ -15,7 +15,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Controller
-@PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
 public class GroupController {
 
     @Autowired
@@ -24,6 +23,7 @@ public class GroupController {
     @Autowired
     private StudentService studentService;
 
+    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/group", method = RequestMethod.GET)
     @ResponseBody
     public List<GroupJson> getAll() throws Throwable {
@@ -32,6 +32,7 @@ public class GroupController {
             .collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/group", method = RequestMethod.PUT)
     @ResponseBody
     public GroupJson save(@RequestBody GroupJson groupJson) throws Throwable {
@@ -40,6 +41,7 @@ public class GroupController {
         return groupToJson.apply(saved);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/group", method = RequestMethod.DELETE)
     @ResponseBody
     public boolean save(@RequestParam Integer id) throws Throwable {

@@ -18,9 +18,7 @@ public class LoginJson {
 
 		return new LoginJson("ok",
 			details.getUsername(),
-			details.getAuthorities()
-				.stream()
-				.anyMatch(a -> a.getAuthority().equals(SecurityContext.ROLE_ADMIN)));
+			SecurityContext.isAdmin(details));
 	}
 
 	public static LoginJson fail() {

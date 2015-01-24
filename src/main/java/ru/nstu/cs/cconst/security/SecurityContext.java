@@ -19,4 +19,16 @@ public class SecurityContext {
 		}
 		return Optional.of((UserDetails)principal);
 	}
+
+	public static boolean isAdmin() {
+		Optional<UserDetails> detailsOp = getUserDetails();
+
+		return detailsOp.isPresent() && isAdmin(detailsOp.get());
+	}
+
+	public static boolean isAdmin(UserDetails details) {
+		return details.getAuthorities()
+			.stream()
+			.anyMatch(a -> a.getAuthority().equals(SecurityContext.ROLE_ADMIN));
+	}
 }
